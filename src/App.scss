@@ -1,0 +1,27 @@
+#root {
+  margin: 15px;
+  max-width: 980px;
+  min-width: 980px;
+  width: 100%;
+}
+
+.button-header,
+.my-array,
+.my-object,
+.my-primitive {
+  margin: 15px 0;
+}
+
+.my-array {
+  list-style: none;
+}
+
+.my-object {
+  list-style: none;
+}
+
+.button-header {
+  button {
+    margin-left: 15px
+  }
+}
