@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import TypeRenderHelper from './components/TypeRenderHelper';
+import {useState, useEffect, useCallback} from 'react';
+import DataSet from './components/DataSet';
 import './App.scss';
 
 const API_URL = 'https://dummyjson.com/products/'
@@ -7,28 +7,27 @@ const API_URL = 'https://dummyjson.com/products/'
 function App() {
 
   const [data, setData] = useState({});
-
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = useCallback(async () => {
       const response = await fetch(API_URL);
       const json = await response.json();
-      return json;
-    }
+      setData(json)
+    }, []);
 
-    fetchData().then(json => {
-      //console.log(json);
-      setData(json);
-    });
-  }, []);
+    useEffect(() => {
+      fetchData();
+    }, [fetchData]);
 
 
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-      <TypeRenderHelper data={data} keyName="root"/>
-    </div>
+      <header className="App-header" />
+      <DataSet
+        data={data}
+        name="root"
+        isRoot
+      />
+</div>
   );
 }
 

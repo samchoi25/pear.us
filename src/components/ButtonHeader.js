@@ -1,20 +1,24 @@
 function ButtonHeader({
     handleClick = () => {},
-    keyName,
-    data,
-    shown
+    headerText,
+    shown,
 }) {
-    const type = Array.isArray(data) ? 'array' : typeof data;
+    const buttonTitle = shown ? "Collapse": "Expand";
+    const buttonText = shown ? "-": "+";
+    const buttonAriaLabel = `${buttonTitle} ${headerText}`;
+
     return (
         <div className="button-header">
-            {keyName} ({type}): 
+            {headerText}: 
             <button
+                aria-label={buttonAriaLabel}
                 onClick={handleClick}
+                title={buttonTitle}
             >
-                {shown ? '-' : '+'}
+                {buttonText}
             </button>
         </div>
-    )
+    );
 }
 
 export default ButtonHeader;

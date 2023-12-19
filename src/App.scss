@@ -6,22 +6,21 @@
 }
 
 .button-header,
-.my-array,
 .my-object,
 .my-primitive {
   margin: 15px 0;
 }
 
-.my-array {
-  list-style: none;
+.my-object {
+  list-style-type: '- ';
 }
 
-.my-object {
-  list-style: none;
+.object-item::marker {
+  content: '';
 }
 
 .button-header {
   button {
-    margin-left: 15px
+    margin-left: 15px;
   }
 }
